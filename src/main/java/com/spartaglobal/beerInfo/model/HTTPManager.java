@@ -12,17 +12,17 @@ public class HTTPManager {
 
     private CloseableHttpResponse fullResponse;
 
-    public HTTPManager() {
-        makeAllBeersCall();
+    public HTTPManager(String endPoint) {
+        makeAllBeersCall(endPoint);
     }
 
     //cornstructor methods
-    private void makeAllBeersCall() {
+    private void makeAllBeersCall(String endPoint) {
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
-            HttpGet getLatestRates = new HttpGet(PropertiesReader.getBaseURL() + PropertiesReader.getBeersEndPoint());
+            HttpGet getRequest = new HttpGet(PropertiesReader.getBaseURL() + endPoint);
             System.out.println(PropertiesReader.getBaseURL() + PropertiesReader.getBeersEndPoint());
-            fullResponse = httpClient.execute(getLatestRates);
+            fullResponse = httpClient.execute(getRequest);
         } catch (IOException e) {
             e.printStackTrace();
         }
