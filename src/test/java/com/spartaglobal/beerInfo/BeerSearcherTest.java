@@ -4,10 +4,10 @@ import com.spartaglobal.beerInfo.model.BeerInfoServices.BeerSearcher;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class BeerInfoServicesTest {
+public class BeerSearcherTest {
 
     @Test
-    public void getBeerSearcher(){
+    public void testGetAmount(){
         BeerSearcher bs = new BeerSearcher("AB:06");
         Assert.assertEquals(bs.getAmout(),1);
     }
