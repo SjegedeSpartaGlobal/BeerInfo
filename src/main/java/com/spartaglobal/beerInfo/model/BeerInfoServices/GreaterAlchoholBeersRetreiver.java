@@ -10,12 +10,9 @@ public class GreaterAlchoholBeersRetreiver {
     private JSONArray beerArray;
 
     public GreaterAlchoholBeersRetreiver(String alcVol) {
-        HTTPManager httpManager = new HTTPManager(PropertiesReader.get+alcVol);
+        HTTPManager httpManager = new HTTPManager(PropertiesReader.getGreaterAlcVol(alcVol));
         RequestReaderToJSONArray reader  = new RequestReaderToJSONArray(httpManager.getResponseBody());
         beerArray = reader.getJSONArray();
     }
 
-    public int getAmoutOfBeers(){
-        return beerArray.size();
-    }
 }

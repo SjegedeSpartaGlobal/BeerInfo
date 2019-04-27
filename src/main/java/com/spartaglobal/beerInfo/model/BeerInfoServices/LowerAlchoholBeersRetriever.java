@@ -6,15 +6,13 @@ import com.spartaglobal.beerInfo.model.RequestInputSuite.RequestReaderToJSONArra
 import org.json.simple.JSONArray;
 
 public class LowerAlchoholBeersRetriever {
+
     private JSONArray beerArray;
 
-    public GreaterAlchoholBeersRetreiver(String alcVol) {
-        HTTPManager httpManager = new HTTPManager(PropertiesReader.getBeersEndPoint()+alcVol);
+    public LowerAlchoholBeersRetriever(String alcVol) {
+        HTTPManager httpManager = new HTTPManager(PropertiesReader.getLessAlcVol(alcVol));
         RequestReaderToJSONArray reader  = new RequestReaderToJSONArray(httpManager.getResponseBody());
         beerArray = reader.getJSONArray();
     }
 
-    public int getAmoutOfBeers(){
-        return beerArray.size();
-    }
 }
