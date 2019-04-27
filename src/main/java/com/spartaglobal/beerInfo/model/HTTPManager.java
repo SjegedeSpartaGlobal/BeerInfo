@@ -13,11 +13,11 @@ public class HTTPManager {
     private CloseableHttpResponse fullResponse;
 
     public HTTPManager() {
-        makeAllRatesCall();
+        makeAllBeersCall();
     }
 
     //cornstructor methods
-    private void makeAllRatesCall() {
+    private void makeAllBeersCall() {
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpGet getLatestRates = new HttpGet(PropertiesReader.getBaseURL() + PropertiesReader.getBeersEndPoint());
