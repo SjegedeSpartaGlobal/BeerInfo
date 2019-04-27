@@ -4,9 +4,9 @@ import org.json.simple.JSONArray;
 
 public class BeerInfoService {
 
-    private JSONArray JArray;
+    protected JSONArray beerServiceArray;
 
     public int getAmout(){
-        return JArray.size();
+        return beerServiceArray.size();
     }
 }
