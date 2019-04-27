@@ -2,7 +2,7 @@ package com.spartaglobal.beerInfo.model.BeerInfoServices;
 
 import com.spartaglobal.beerInfo.model.RequestInputSuite.HTTPManager;
 import com.spartaglobal.beerInfo.model.RequestInputSuite.PropertiesReader;
-import com.spartaglobal.beerInfo.model.RequestInputSuite.RequestReaderToJSONArray;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.RequestToJSONArray;
 import org.json.simple.JSONArray;
 
 public class BeerSearcher extends BeerInfoService{
@@ -11,7 +11,7 @@ public class BeerSearcher extends BeerInfoService{
 
     public BeerSearcher(String param) {
         HTTPManager httpManager = new HTTPManager(PropertiesReader.getNameQuery(param));
-        RequestReaderToJSONArray reader  = new RequestReaderToJSONArray(httpManager.getResponseBody());
+        RequestToJSONArray reader  = new RequestToJSONArray(httpManager.getResponseBody());
         beerArray = reader.getJSONArray();
         super.beerServiceArray = beerArray;
     }

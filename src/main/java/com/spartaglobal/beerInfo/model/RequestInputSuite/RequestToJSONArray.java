@@ -4,11 +4,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class RequestReaderToJSONArray {
+public class RequestToJSONArray {
     private JSONArray JArray;
     private JSONParser parser;
 
-    public RequestReaderToJSONArray(String jsonString) {
+    public RequestToJSONArray(String jsonString) {
         try {
             parser = new JSONParser();
             JArray = (JSONArray) parser.parse(jsonString);

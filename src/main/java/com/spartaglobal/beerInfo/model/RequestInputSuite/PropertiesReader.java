@@ -52,7 +52,7 @@ public class PropertiesReader {
         return foodQuery + param;
     }
 
-    public static String getGreaterAlcVol(String param){
+    public static String getGreaterAlcVol(int param){
         if(greaterAlcVol==null){
             setUp();
         }
@@ -60,7 +60,7 @@ public class PropertiesReader {
         return greaterAlcVol + param;
     }
 
-    public static String getLessAlcVol(String param){
+    public static String getLessAlcVol(int param){
         if(lessAlcVol==null){
             setUp();
         }
@@ -68,7 +68,7 @@ public class PropertiesReader {
         return lessAlcVol + param;
     }
 
-    public static String getGreaterBitterness(String param){
+    public static String getGreaterBitterness(int param){
         if(greaterBitterness==null){
             setUp();
         }
@@ -76,7 +76,7 @@ public class PropertiesReader {
         return greaterBitterness + param;
     }
 
-    public static String getLessBitterness(String param){
+    public static String getLessBitterness(int param){
         if(lessBitterness==null){
             setUp();
         }
