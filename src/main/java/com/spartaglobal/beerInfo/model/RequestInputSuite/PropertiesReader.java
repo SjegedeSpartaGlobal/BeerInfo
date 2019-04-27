@@ -1,4 +1,4 @@
-package com.spartaglobal.beerInfo.model;
+package com.spartaglobal.beerInfo.model.RequestInputSuite;
 
 import java.io.FileReader;
 import java.io.IOException;

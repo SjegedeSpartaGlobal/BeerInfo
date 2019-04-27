@@ -1,4 +1,4 @@
-package com.spartaglobal.beerInfo.model;
+package com.spartaglobal.beerInfo.model.RequestInputSuite;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;

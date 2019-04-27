@@ -1,7 +1,8 @@
 package com.spartaglobal.beerInfo;
 
-import com.spartaglobal.beerInfo.model.HTTPManager;
-import com.spartaglobal.beerInfo.model.RequestReaderToJSONArray;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.HTTPManager;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.PropertiesReader;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.RequestReaderToJSONArray;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.junit.Assert;
@@ -10,8 +11,8 @@ import org.junit.Test;
 public class HTTPManagerTest {
 
     @Test
-    public void testMakeAllBeers(){
-        HTTPManager httpManager = new HTTPManager();
+    public void testHTTPManger(){
+        HTTPManager httpManager = new HTTPManager(PropertiesReader.getBeersEndPoint());
         RequestReaderToJSONArray reader  = new RequestReaderToJSONArray(httpManager.getResponseBody());
         JSONArray beerArray = reader.getJSONArray();
         JSONObject beer = (JSONObject) beerArray.get(1);

@@ -1,4 +1,4 @@
-package com.spartaglobal.beerInfo.model;
+package com.spartaglobal.beerInfo.model.RequestInputSuite;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
