@@ -1,5 +1,7 @@
 package com.spartaglobal.beerInfo.view;
 
+import com.spartaglobal.beerInfo.model.BeerInfoDTO.BeerInfoDTO;
+
 public class BeerInfoDisplayer {
     private String[] beerNames;
     private int amount;
