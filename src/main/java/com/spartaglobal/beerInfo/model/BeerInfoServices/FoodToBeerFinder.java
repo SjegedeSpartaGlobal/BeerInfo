@@ -7,7 +7,8 @@ import org.json.simple.JSONArray;
 
 public class FoodToBeerFinder extends BeerInfoService{
 
-    private JSONArray beerArray;
+    private static JSONArray beerArray;
+
 
     public FoodToBeerFinder(String param) {
         HTTPManager httpManager = new HTTPManager(PropertiesReader.getFoodQuery(param));
