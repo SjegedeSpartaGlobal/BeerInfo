@@ -1,6 +1,6 @@
 package com.spartaglobal.beerInfo;
 
-import com.spartaglobal.beerInfo.model.BeerInfoServices.BeerInfoServices;
+import com.spartaglobal.beerInfo.controller.BeerInfoServices;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,5 +19,28 @@ public class BeerInfoServicesTest {
         Assert.assertEquals("Berliner Weisse With Yuzu - B-Sides", beerInfo.searchBeers("Berliner Weisse").getBeerNames()[0]);
     }
 
+    @Test
+    public void testBeersMatchingFood(){
+        Assert.assertEquals(2, beerInfo.beersMatchingFood("Cheesecake with a passion fruit swirl sauce").getAmout());
+    }
 
+    @Test
+    public void testGetHighAlcContent(){
+        Assert.assertEquals(2, beerInfo.getHighAlcContent(40).getAmout());
+    }
+
+    @Test
+    public void testLowHighAlcContent(){
+        Assert.assertEquals(2, beerInfo.getLowAlcContent(1).getAmout());
+    }
+
+    @Test
+    public void testGetHighBitternessBeers(){
+        Assert.assertEquals(2, beerInfo.getHighBittenessBeers(1010).getAmout());
+    }
+
+    @Test
+    public void testGetLowBitternessBeers(){
+        Assert.assertEquals(6, beerInfo.getLowBittenessBeers(5).getAmout());
+    }
 }

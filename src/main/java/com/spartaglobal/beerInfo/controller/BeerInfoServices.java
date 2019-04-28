@@ -1,5 +1,6 @@
-package com.spartaglobal.beerInfo.model.BeerInfoServices;
+package com.spartaglobal.beerInfo.controller;
 
+import com.spartaglobal.beerInfo.model.BeerInfoServices.*;
 import com.spartaglobal.beerInfo.model.RequestInputSuite.QueryStringCreator;
 
 public class BeerInfoServices {
