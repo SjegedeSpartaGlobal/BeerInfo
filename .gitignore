@@ -1,3 +1,4 @@
 .idea/
 BeerInfo.iml
 /target/
+/resources/beer_info.properties

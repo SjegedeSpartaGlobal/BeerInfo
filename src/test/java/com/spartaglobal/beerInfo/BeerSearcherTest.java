@@ -35,9 +35,9 @@ public class BeerSearcherTest {
 
     @Test
     public void testGetBeerNames(){
-        String[] names = {"Berliner Weisse With Yuzu - B-Sides", "Berliner Weisse With Raspberries And Rhubarb - B-Sides",
+        String[] berlinerNames = {"Berliner Weisse With Yuzu - B-Sides", "Berliner Weisse With Raspberries And Rhubarb - B-Sides",
                 "Blitz Berliner Weisse"};
-        Assert.assertEquals(names, bs.getBeerNames());
+        Assert.assertArrayEquals(berlinerNames, bs.getBeerNames());
     }
 }
 
