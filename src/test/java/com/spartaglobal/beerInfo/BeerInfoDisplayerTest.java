@@ -14,7 +14,7 @@ public class BeerInfoDisplayerTest {
     public static void setDisplayer(){
         BeerInfoServices beerInfo = new BeerInfoServices();
         BeerSearcher bs = beerInfo.searchBeers("Berliner Weisse");
-        displayer = new BeerInfoDisplayer(bs.getBeerNames(), bs.getAmout(), "Berliner Weisse");
+        displayer = new BeerInfoDisplayer(bs.getBeerNames(), bs.getAmount(), "Berliner Weisse");
     }
 
     @Test

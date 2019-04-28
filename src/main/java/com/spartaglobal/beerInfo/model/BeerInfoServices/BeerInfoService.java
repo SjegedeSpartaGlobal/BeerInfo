@@ -9,7 +9,7 @@ public class BeerInfoService {
 
     protected JSONArray beerServiceArray;
 
-    public int getAmout(){
+    public int getAmount(){
         return beerServiceArray.size();
     }
 

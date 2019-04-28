@@ -21,26 +21,26 @@ public class BeerInfoServicesTest {
 
     @Test
     public void testBeersMatchingFood(){
-        Assert.assertEquals(2, beerInfo.beersMatchingFood("Cheesecake with a passion fruit swirl sauce").getAmout());
+        Assert.assertEquals(2, beerInfo.beersMatchingFood("Cheesecake with a passion fruit swirl sauce").getAmount());
     }
 
     @Test
     public void testGetHighAlcContent(){
-        Assert.assertEquals(2, beerInfo.getHighAlcContent(40).getAmout());
+        Assert.assertEquals(2, beerInfo.getHighAlcContent(40).getAmount());
     }
 
     @Test
     public void testLowHighAlcContent(){
-        Assert.assertEquals(2, beerInfo.getLowAlcContent(1).getAmout());
+        Assert.assertEquals(2, beerInfo.getLowAlcContent(1).getAmount());
     }
 
     @Test
     public void testGetHighBitternessBeers(){
-        Assert.assertEquals(2, beerInfo.getHighBittenessBeers(1010).getAmout());
+        Assert.assertEquals(2, beerInfo.getHighBittenessBeers(1010).getAmount());
     }
 
     @Test
     public void testGetLowBitternessBeers(){
-        Assert.assertEquals(6, beerInfo.getLowBittenessBeers(5).getAmout());
+        Assert.assertEquals(6, beerInfo.getLowBittenessBeers(5).getAmount());
     }
 }

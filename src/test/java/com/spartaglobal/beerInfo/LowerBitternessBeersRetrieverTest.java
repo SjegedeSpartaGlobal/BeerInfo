@@ -16,7 +16,7 @@ public class LowerBitternessBeersRetrieverTest {
 
     @Test
     public void testGetAmount(){
-        Assert.assertEquals(6,beersRetriever.getAmout());
+        Assert.assertEquals(6,beersRetriever.getAmount());
     }
 
     @Test

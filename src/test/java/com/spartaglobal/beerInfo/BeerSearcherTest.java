@@ -19,7 +19,7 @@ public class BeerSearcherTest {
 
     @Test
     public void testGetAmount(){
-        Assert.assertEquals(3, bs.getAmout());
+        Assert.assertEquals(3, bs.getAmount());
     }
 
     @Test

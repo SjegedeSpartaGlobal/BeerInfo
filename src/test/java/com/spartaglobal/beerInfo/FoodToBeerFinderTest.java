@@ -19,7 +19,7 @@ public class FoodToBeerFinderTest {
 
     @Test
     public void testGetAmount(){
-        Assert.assertEquals(2, beerFinder.getAmout());
+        Assert.assertEquals(2, beerFinder.getAmount());
     }
 
     @Test

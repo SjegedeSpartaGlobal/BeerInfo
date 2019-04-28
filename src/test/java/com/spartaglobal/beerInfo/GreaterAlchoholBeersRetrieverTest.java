@@ -16,7 +16,7 @@ public class GreaterAlchoholBeersRetrieverTest {
 
     @Test
     public void testGetAmount(){
-        Assert.assertEquals(2, beersRetreiver.getAmout());
+        Assert.assertEquals(2, beersRetreiver.getAmount());
     }
 
     @Test
