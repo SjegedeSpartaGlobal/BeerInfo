@@ -16,6 +16,7 @@ public class BeerInfoDTODisplayer {
         this.beerInfoDTO = beerInfoDTO;
         name = this.beerInfoDTO.getName();
         alcContent = this.beerInfoDTO.getAlcContent();
+        foodPairings = new String[]{"hello"};
         foodPairings = this.beerInfoDTO.getFoodPairings();
         description = this.beerInfoDTO.getDescription();
         try {

@@ -5,39 +5,66 @@ import org.json.simple.JSONObject;
 
 public class BeerInfoDTO {
     private String name;
-    private long alcContent;
+    private double alcContent;
     private long bitternessRating;
     private String[] foodPairings;
     private String description;
     private boolean unknownBitterness;
+    private boolean unknownAlcContent;
+    private boolean unknownName;
+    private boolean unknownFoodPairings;
+    private boolean unknwownDescription;
+    private boolean unknownDescription;
 
 
     public BeerInfoDTO(JSONObject jsonInput) {
         String next;
-        name = (String) jsonInput.get("name");
-        alcContent = (long) jsonInput.get("abv");
-        if(jsonInput.get("ibu")!=null) {
-            bitternessRating = (long) jsonInput.get("ibu");
+
+        if(!((String) jsonInput.get("name")).equals("")) {
+            name = (String) jsonInput.get("name");
+        }else{
+            name = "";
+            unknownName = true;
+        }
+        if(Double.parseDouble(jsonInput.get("abv").toString())!=0) {
+            alcContent = Double.parseDouble(jsonInput.get("abv").toString());
+        }else{
+            alcContent = 0;
+            unknownAlcContent = true;
+        }
+        if(jsonInput.get("ibu")!=null){
+            bitternessRating = Long.parseLong(jsonInput.get("ibu").toString());
         }else{
             bitternessRating = 0;
             unknownBitterness = true;
         }
-
-        description = (String) jsonInput.get("description");
-        JSONArray JArray = (JSONArray) jsonInput.get("food_pairing");
-        foodPairings = new String[JArray.size()];
-
-        for(int i=0; i<JArray.size(); i++){
-            next = (String) JArray.get(i);
-            foodPairings[i] = next;
+        if(!((String) jsonInput.get("description")).equals("")) {
+            description = (String) jsonInput.get("description");
+        }else{
+            description = "";
+            unknownDescription = true;
         }
+//        foodPairings = new String[]{"hello"};
+        if(((JSONArray) jsonInput.get("food_pairing"))!=null) {
+            JSONArray JArray = (JSONArray) jsonInput.get("food_pairing");
+            foodPairings = new String[JArray.size()];
+
+            for(int i=0; i<JArray.size(); i++){
+                next = (String) JArray.get(i);
+                foodPairings[i] = next;
+            }
+        }else{
+            foodPairings = new String[]{"hello"};
+            unknownFoodPairings = true;
+        }
+
     }
 
     public String getName() {
         return name;
     }
 
-    public long getAlcContent() {
+    public double getAlcContent() {
         return alcContent;
     }
 
