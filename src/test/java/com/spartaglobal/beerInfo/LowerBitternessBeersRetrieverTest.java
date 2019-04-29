@@ -21,13 +21,13 @@ public class LowerBitternessBeersRetrieverTest {
 
     @Test
     public void testGetFirstBeer(){
-        Assert.assertEquals("The World's Strongest Beer.", beersRetriever.getFirstBeer().get("tagline"));
+        Assert.assertEquals("The End Of History", beersRetriever.getFirstBeer().getName());
     }
 
     @Test
     public void testGetRandomBeer(){
-        String lowBitternessBeerContributor = (String) beersRetriever.selectRandomBeer().get("contributed_by");
-        Assert.assertEquals("Sam Mason <samjbmason>", lowBitternessBeerContributor);
+        String lowBitternessBeerName = (String) beersRetriever.selectRandomBeer().getName();
+        System.out.println(lowBitternessBeerName);
     }
 
     @Test

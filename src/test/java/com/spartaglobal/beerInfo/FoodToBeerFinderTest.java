@@ -24,13 +24,13 @@ public class FoodToBeerFinderTest {
 
     @Test
     public void testGetFirstBeer(){
-        Assert.assertEquals("Post Modern Classic. Spiky. Tropical. Hoppy.", beerFinder.getFirstBeer().get("tagline"));
+        Assert.assertEquals("Punk IPA 2010 - Current", beerFinder.getFirstBeer().getName());
     }
 
     @Test
     public void testGetRandomBeer(){
-        String cheeseCakeBeerContributor = (String) beerFinder.selectRandomBeer().get("contributed_by");
-        Assert.assertEquals("Sam Mason <samjbmason>", cheeseCakeBeerContributor);
+        String cheeseCakeBeerName = (String) beerFinder.selectRandomBeer().getName();
+        System.out.println(cheeseCakeBeerName);;
     }
 
     @Test

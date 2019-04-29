@@ -21,12 +21,12 @@ public class LowerAlchoholBeersRetrieverTest {
 
     @Test
     public void testGetFirstBeer(){
-        Assert.assertEquals("Alcohol Free Hoppy Ale.", beersRetriever.getFirstBeer().get("tagline"));
+        Assert.assertEquals("Nanny State", beersRetriever.getFirstBeer().getName());
     }
 
     @Test
     public void testGetRandomBeer(){
-        double lowContentAlcContent = (double) beersRetriever.selectRandomBeer().get("abv");
+        double lowContentAlcContent = (double) beersRetriever.selectRandomBeer().getAlcContent();
         Assert.assertEquals(0.5, lowContentAlcContent, 0.01);
     }
 

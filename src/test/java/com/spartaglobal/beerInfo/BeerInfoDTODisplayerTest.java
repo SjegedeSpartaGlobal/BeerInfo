@@ -15,7 +15,7 @@ public class BeerInfoDTODisplayerTest {
         QueryStringCreator queryCreator = new QueryStringCreator("Berliner Weisse");
         String queryString = queryCreator.getQueryString();
         BeerSearcher bs  = new BeerSearcher(queryString);
-        BeerInfoDTO dto = new BeerInfoDTO(bs.getFirstBeer());
+        BeerInfoDTO dto = bs.getFirstBeer();
         beerInfoDTO = new BeerInfoDTODisplayer(dto);
     }
 

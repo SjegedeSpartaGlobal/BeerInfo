@@ -5,17 +5,24 @@ import org.json.simple.JSONObject;
 
 public class BeerInfoDTO {
     private String name;
-    private double alcContent;
+    private long alcContent;
     private long bitternessRating;
     private String[] foodPairings;
     private String description;
+    private boolean unknownBitterness;
 
 
     public BeerInfoDTO(JSONObject jsonInput) {
         String next;
         name = (String) jsonInput.get("name");
-        alcContent = (double) jsonInput.get("abv");
-        bitternessRating = (long) jsonInput.get("ibu");
+        alcContent = (long) jsonInput.get("abv");
+        if(jsonInput.get("ibu")!=null) {
+            bitternessRating = (long) jsonInput.get("ibu");
+        }else{
+            bitternessRating = 0;
+            unknownBitterness = true;
+        }
+
         description = (String) jsonInput.get("description");
         JSONArray JArray = (JSONArray) jsonInput.get("food_pairing");
         foodPairings = new String[JArray.size()];
@@ -30,12 +37,17 @@ public class BeerInfoDTO {
         return name;
     }
 
-    public double getAlcContent() {
+    public long getAlcContent() {
         return alcContent;
     }
 
-    public long getBitternessRating() {
-        return bitternessRating;
+    public long getBitternessRating() throws IBUException{
+        if(!unknownBitterness) {
+            return bitternessRating;
+        }else{
+            throw new IBUException("unknown Bitterness");
+        }
+
     }
 
     public String[] getFoodPairings() {

@@ -1,8 +1,14 @@
 package com.spartaglobal.beerInfo;
 
 import com.spartaglobal.beerInfo.model.BeerInfoDTO.BeerInfoDTO;
+import com.spartaglobal.beerInfo.model.BeerInfoDTO.IBUException;
 import com.spartaglobal.beerInfo.model.BeerInfoServices.BeerSearcher;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.HTTPManager;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.PropertiesReader;
 import com.spartaglobal.beerInfo.model.RequestInputSuite.QueryStringCreator;
+import com.spartaglobal.beerInfo.model.RequestInputSuite.RequestToJSONArray;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,10 +19,10 @@ public class BeerInfoDTOTest {
 
     @BeforeClass
     public static void setUpBeerInfo(){
-        QueryStringCreator queryCreator = new QueryStringCreator("Berliner Weisse");
-        String queryString = queryCreator.getQueryString();
-        BeerSearcher bs  = new BeerSearcher(queryString);
-        beerInfo = new BeerInfoDTO(bs.getFirstBeer());
+        HTTPManager httpManager = new HTTPManager(PropertiesReader.getNameQuery("Berliner Weisse"));
+        RequestToJSONArray reader  = new RequestToJSONArray(httpManager.getResponseBody());
+        JSONArray beerArray = reader.getJSONArray();
+        beerInfo = new BeerInfoDTO((JSONObject) beerArray.get(0));
     }
 
     @Test
@@ -31,7 +37,11 @@ public class BeerInfoDTOTest {
 
     @Test
     public void testGetBitternessRating(){
-        Assert.assertEquals(8, (long) beerInfo.getBitternessRating());
+        try {
+            Assert.assertEquals(8, (long) beerInfo.getBitternessRating());
+        } catch (IBUException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.spartaglobal.beerInfo.model.BeerInfoServices;
 
+import com.spartaglobal.beerInfo.model.BeerInfoDTO.BeerInfoDTO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -13,16 +14,20 @@ public class BeerInfoService {
         return beerServiceArray.size();
     }
 
-    public JSONObject getFirstBeer(){
-        return (JSONObject) beerServiceArray.get(0);
+    public BeerInfoDTO getFirstBeer(){
+        JSONObject jsonObject = (JSONObject) beerServiceArray.get(0);
+        BeerInfoDTO beerInfoDTO = new BeerInfoDTO(jsonObject);
+        return  beerInfoDTO;
     }
 
-    public JSONObject selectRandomBeer(){
+    public BeerInfoDTO selectRandomBeer(){
         Random r = new Random();
         int length = beerServiceArray.size();
         int randPos = r.nextInt(length);
+        JSONObject jsonObject = (JSONObject) beerServiceArray.get(randPos);
+        BeerInfoDTO beerInfoDTO = new BeerInfoDTO(jsonObject);
 
-        return (JSONObject) beerServiceArray.get(randPos);
+        return beerInfoDTO;
     }
 
     public String[] getBeerNames(){

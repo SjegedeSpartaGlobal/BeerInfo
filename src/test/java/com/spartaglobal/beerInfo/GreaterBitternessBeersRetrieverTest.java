@@ -1,5 +1,6 @@
 package com.spartaglobal.beerInfo;
 
+import com.spartaglobal.beerInfo.model.BeerInfoDTO.IBUException;
 import com.spartaglobal.beerInfo.model.BeerInfoServices.GreaterBitternessBeersRetriever;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -21,13 +22,18 @@ public class GreaterBitternessBeersRetrieverTest {
 
     @Test
     public void testGetFirstBeer(){
-        Assert.assertEquals("IPA For The Dedicated.", beersRetriever.getFirstBeer().get("tagline"));
+        Assert.assertEquals("Sink The Bismarck!", beersRetriever.getFirstBeer().getName());
     }
 
     @Test
     public void testGetRandomBeer(){
-        double highBitternessPH = (double) beersRetriever.selectRandomBeer().get("ph");
-        Assert.assertEquals(4.4, highBitternessPH, 0.01);
+        double bitterness = 0;
+        try {
+            bitterness = (double) beersRetriever.selectRandomBeer().getBitternessRating();
+        } catch (IBUException e) {
+            e.printStackTrace();
+        }
+        System.out.println(bitterness);
     }
 
     @Test

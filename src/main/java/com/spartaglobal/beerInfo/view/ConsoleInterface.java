@@ -9,32 +9,31 @@ import java.util.Scanner;
 
 public class ConsoleInterface {
 
-
-    private BeerInfoServices beerServices;
+    private BeerInfoServices beerServices = new BeerInfoServices();
 
     public void run(){
+        System.out.println("What would you like to search by: ");
         String input = getInput();
         search(input);
     }
 
-    public void search(String searchTerm){
-        if(searchTerm.equals("Search by Beer Name")){
+    private void search(String searchTerm){
+        searchTerm = toLowercase(searchTerm);
+        if(searchTerm.equals("beer name")){
             searchByName();
-        }
-        else if(searchTerm.equals("Search by Food")){
+        } else if(searchTerm.equals("food")){
             searchByFood();
-        }
-        else if(searchTerm.equals("Search by High Alchohol Content")){
+        } else if(searchTerm.equals("high alcohol content")){
             searchByHighAlc();
-        }else if(searchTerm.equals("Search by Low Alchohol Content")){
+        }else if(searchTerm.equals("low alcohol content")){
             searchByLowAlc();
-        }else if(searchTerm.equals("Search by High Bitterness Rating")){
+        }else if(searchTerm.equals("high bitterness rating")){
             searchByHighBitterness();
-        }else if(searchTerm.equals("Search by Low Bitterness Rating")){
+        }else if(searchTerm.equals("low bitterness rating")){
             searchByLowBitterness();
         }
     }
-    public String getInput(){
+    private String getInput(){
         String nextInput = "";
         Scanner scanner = new Scanner(System.in);
 
@@ -44,50 +43,58 @@ public class ConsoleInterface {
         return nextInput;
     }
 
-    public JSONObject getJSONObject(String input, BeerInfoService bs){
-        JSONObject json = null;
+    private BeerInfoDTO getBeerDTO(String input, BeerInfoService bs){
+        BeerInfoDTO beerDTO = null;
+        input = toLowercase(input);
         if(input.equals("first")){
-            json = bs.getFirstBeer();
+            beerDTO = bs.getFirstBeer();
         }else if(input.equals("random")){
-            json = bs.selectRandomBeer();
+            beerDTO = bs.selectRandomBeer();
         }
-        return json;
+        return beerDTO;
     }
 
-    public void displayResults(String[] beerNames, int amount, String query){
+    private void displayResults(String[] beerNames, int amount, String query){
         BeerInfoDisplayer beerInfoDisplayer = new BeerInfoDisplayer(beerNames, amount, query);
         beerInfoDisplayer.displaySearchResults();
     }
 
-    public void displayDTO(JSONObject jsonObject){
-        BeerInfoDTO beerInfoDTO = new BeerInfoDTO(jsonObject);
+    private void displayDTO(BeerInfoDTO beerInfoDTO){
         BeerInfoDTODisplayer beerInfoDTODisplayer = new BeerInfoDTODisplayer(beerInfoDTO);
         beerInfoDTODisplayer.displayBeerInfoDTO();
     }
 
-    public boolean isExit(String input){
-        if(input.equals("Exit")){
+    private boolean isExit(String input){
+        input = toLowercase(input);
+        if(input.equals("exit")){
             return true;
         }
         return false;
     }
 
-    public void searchHelper(BeerInfoService beerInfoService, String input){
+    private String toLowercase(String str){
+        String newStr = str.toLowerCase();
+        return newStr;
+    }
+
+    private void searchHelper(BeerInfoService beerInfoService, String input){
         displayResults(beerInfoService.getBeerNames(), beerInfoService.getAmount(), input);
         System.out.println("Would you like to get the first beer or pick a random one? ");
-        input = getInput();
-        if(!isExit(input)) {
-            JSONObject jsonObject = getJSONObject(input, beerInfoService);
-            displayDTO(jsonObject);
+        String input3 = getInput();
+        input3 = toLowercase(input3);
+        if(!isExit(input3)) {
+            BeerInfoDTO beerDTO = getBeerDTO(input3, beerInfoService);
+            displayDTO(beerDTO);
         } else{
             System.out.println("See you later!");
         }
     }
 
-    public void searchByName(){
+    private void searchByName(){
         String input2 = "";
         System.out.println("Enter Beer Name: ");
         input2 = getInput();
+        input2 = toLowercase(input2);
         if(!isExit(input2)) {
             BeerSearcher bs = beerServices.searchBeers(input2);
             searchHelper(bs, input2);
@@ -96,10 +103,11 @@ public class ConsoleInterface {
         }
     }
 
-    public void searchByFood(){
+    private void searchByFood(){
         String input2 = "";
-        System.out.println("Enter Beer Name: ");
+        System.out.println("Enter Food: ");
         input2 = getInput();
+        input2 = toLowercase(input2);
         if(!isExit(input2)) {
             FoodToBeerFinder fb = beerServices.beersMatchingFood(input2);
             searchHelper(fb, input2);
@@ -108,10 +116,11 @@ public class ConsoleInterface {
         }
     }
 
-    public void searchByHighAlc(){
+    private void searchByHighAlc(){
         String input2 = "";
-        System.out.println("Enter Beer Name: ");
+        System.out.println("Enter Alcohol Content: ");
         input2 = getInput();
+        input2 = toLowercase(input2);
         if(!isExit(input2)) {
             int intInput = Integer.parseInt(input2);
             GreaterAlchoholBeersRetreiver highAlc = beerServices.getHighAlcContent(intInput);
@@ -121,10 +130,11 @@ public class ConsoleInterface {
         }
     }
 
-    public void searchByLowAlc(){
+    private void searchByLowAlc(){
         String input2 = "";
-        System.out.println("Enter Beer Name: ");
+        System.out.println("Enter Alcohol Content: ");
         input2 = getInput();
+        input2 = toLowercase(input2);
         if(!isExit(input2)) {
             int intInput = Integer.parseInt(input2);
             LowerAlchoholBeersRetriever lowAlc = beerServices.getLowAlcContent(intInput);
@@ -134,10 +144,11 @@ public class ConsoleInterface {
         }
     }
 
-    public void searchByLowBitterness(){
+    private void searchByLowBitterness(){
         String input2 = "";
-        System.out.println("Enter Beer Name: ");
+        System.out.println("Enter Bitterness Rating: ");
         input2 = getInput();
+        input2 = toLowercase(input2);
         if(!isExit(input2)) {
             int intInput = Integer.parseInt(input2);
             LowerBitternessBeersRetriever lowBitterness = beerServices.getLowBittenessBeers(intInput);
@@ -147,10 +158,11 @@ public class ConsoleInterface {
         }
     }
 
-    public void searchByHighBitterness(){
+    private void searchByHighBitterness(){
         String input2 = "";
-        System.out.println("Enter Beer Name: ");
+        System.out.println("Enter Bitterness Rating: ");
         input2 = getInput();
+        input2 = toLowercase(input2);
         if(!isExit(input2)) {
             int intInput = Integer.parseInt(input2);
             GreaterBitternessBeersRetriever highBitterness = beerServices.getHighBittenessBeers(intInput);
